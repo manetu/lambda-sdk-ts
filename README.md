@@ -33,7 +33,7 @@ cd my-lambda
   "description": "Hello World as a Manetu Lambda Function",
   "main": "src/main.js",
   "dependencies": {
-    "manetu-lambda-sdk": "file:../..",
+    "manetu-lambda-sdk": "0.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1"
   }
 }
