@@ -8,7 +8,6 @@ This repository hosts an SDK for developing Lambda functions for the Manetu Plat
 - [tsc](https://www.typescriptlang.org/download)
 - [rollup](https://rollupjs.org/introduction/#installation)
 - [mjsc](https://github.com/manetu/javascript-lambda-compiler)
-- [wasm-to-oci](https://github.com/engineerd/wasm-to-oci)
 
 ## Project setup
 
@@ -131,18 +130,7 @@ popd
 make
 ```
 
-You should now have a file 'target/lambda.wasm' ready for deployment.
-
-### Publish the WASM code
-
-We can leverage any [OCI](https://opencontainers.org/) registry to publish our Lambda function using the [wasm-to-oci](https://github.com/engineerd/wasm-to-oci) tool.
-
-``` shell
-$ wasm-to-oci push target/lambda.wasm my-registry.example.com/my-lambda:v0.0.1
-INFO[0003] Pushed: my-registry.example.com/my-lambda:v0.0.1
-INFO[0003] Size: 1242738
-INFO[0003] Digest: sha256:cf9040f3bcd0e84232013ada2b3af02fe3799859480046b88cdd03b59987f3c9
-```
+You should now have a file 'target/lambda.wasm' ready for deployment (See general documentation).
 
 ### Define a specification for your Lambda function
 
