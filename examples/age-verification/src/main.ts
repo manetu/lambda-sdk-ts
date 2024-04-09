@@ -2,11 +2,11 @@ import { register, LambdaRequest, LambdaResponse, query } from 'manetu-lambda-sd
 import mustache from 'mustache';
 
 const queryTemplate = `
-PREFIX foaf:  <http://xmlns.com/foaf/0.1/> 
+PREFIX id: <http://example.gov/rmv/>
 SELECT ?dob
-WHERE { 
-     ?s foaf:biometric-hash "{{biometric-hash}}" ;
-        foaf:dob            ?dob .
+WHERE {
+     ?s id:biometric-hash "{{biometric-hash}}" ;
+        id:dob            ?dob .
 }`;
 
 function handler(req: LambdaRequest): LambdaResponse {
@@ -17,9 +17,8 @@ function handler(req: LambdaRequest): LambdaResponse {
         }
 
         const renderedQuery = mustache.render(queryTemplate, { 'biometric-hash': biometricHash });
-        const queryResult = query(renderedQuery); 
+        const queryResult = query(renderedQuery);
 
-        
         const resultData = JSON.parse(queryResult.body);
 
         if (!resultData || !resultData.results || resultData.results.bindings.length === 0) {
